@@ -1,14 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <div id = 'app'>
+        <input type="text" v-model="num"><button v-on:click="num++">点我</button>
         <h2>
-            {{ name }}牛批
+            {{ name }}双向绑定1 <br/>
+            {{ num }} 双向绑定2
         </h2>
+    </div>
+
+    <div id = "a1">
+        <input type="text" v-model = "input">
+        <h2>
+            {{ name }} <br/>
+            {{ age }} <br/>
+            {{ language }} <br/>
+            {{ input }}
+        </h2>
+    </div>
+
+    <div id = "testAdd">
+        <button v-on:click = "add" >点我</button>
+        {{ num }}
     </div>
 </body>
 <script src="./node_modules/vue/dist/vue.js"></script>
@@ -17,7 +34,31 @@
     var app = new Vue({
         el:"#app", // el,即element。要渲染的的页面元素
         data:{ // 数据
-            name:"shawn"
+            name : "shawn",
+            num : 20
+        }
+    })
+
+    var hello = new Vue({
+        el : "#a1",
+        data : {
+            name : "shawn",
+            age : 20,
+            language : ["java", "sql", "html"],
+            input : ""
+        }
+    })
+
+    var testAdd = new Vue({
+        el : "#testAdd",
+        data : {
+            num : 1
+        },
+        methods : {
+            add : function(){
+                //this代表当前的vue实例
+                this.num++;
+            }
         }
     })
 </script>

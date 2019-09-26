@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+
+        {{ name }}
+
+    </div>
+
+    <div id="app1">
+        v-text: <span v-text = "name"></span> <br>
+        v-html: <span v-html = "name"></span>
+    </div>
+
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el : "#app",
+        data : {
+            name : "hello"
+        },
+         created(){
+            this.name  = "我已经构建了！"
+             console.log(this)
+         }
+    })
+
+    var app1 = new Vue({
+        el : "#app1",
+        data : {
+            name : "hello"
+        },
+        created(){
+            this.name = "看得到标签吗？"
+        }
+    })
+</script>
+</html>

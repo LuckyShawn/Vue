@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="language" value="Java">Java <br/>
+        <input type="checkbox" v-model="language" value="PHP">PHP <br/>
+        <input type="checkbox" v-model="language" value="Python">Python <br/>
+        <h2>
+            你选择了：{{ language.join(',') }}
+        </h2>
+    </div>
+    <div id="appvon">
+        <!--事件中直接写js片段-->
+        <button @click="num++">增加</button>
+        <!--事件指定一个回调函数，必须是Vue实例中定义的函数-->
+        <button v-on:click="decrement">减少</button>
+        <!--  v-on:click 简写：@click -->
+        <span>num : {{ num }}</span>
+    </div>
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el : "#app",
+        data : {
+            language : []
+        }
+    })
+
+    var appvon = new Vue({
+        el : "#appvon",
+        data : {
+            name : "shawn",
+            num : 10
+        },
+        methods: {
+            decrement(){
+                this.num--;
+            }
+        }
+
+
+    })
+</script>
+</html>

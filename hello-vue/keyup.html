@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- 只有在 `keyCode` 是 13 时调用 `vm.submit()` -->
+        <input v-on:keyup.13="hello" value="13">13 <br>
+        <!-- 同上 -->
+        <input v-on:keyup.enter="enter" value="enter">enter <br>
+        <!-- 缩写语法 -->
+        <input @keyup.enter="enter" value="enter" >enter <br>
+
+        <input @keyup.up="up" value="up">up <br>
+
+        <span>
+            {{ name }}
+        </span><br>
+        <!--alt + c清除-->
+        <input @keyup.alt.67="clear" value=""> 67 <br>
+        <!--ctrl + click -->
+        <input @click.ctrl="click" value="click"> click <br>
+
+    </div>
+
+</body>
+<link rel="stylesheet" href="./node_modules/bootstrap3/dist/css/bootstrap.min.css">
+<script src="./node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            name:"shawn"
+        },
+        methods:{
+            hello:function(){
+                this.name = "hello!";
+            },
+            enter:function(){
+                this.name = "enter";
+            },
+    up:function(){
+                this.name = "up";
+            },
+            clear:function(){
+                this.name = "";
+            },
+            click:function(){
+                this.name = "click";
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table class="table" id="app">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">gender</th>
+            <th scope="col">age</th>
+        </tr>
+        </thead>
+        <tbody >
+        <tr v-for="(user , index) in users" >
+            <td>{{index+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.gender}}</td>
+            <td>{{user.age}}</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+<link rel="stylesheet" href="./node_modules/bootstrap3/dist/css/bootstrap.min.css">
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+
+var app = new Vue({
+        el:"#app",
+        data:{
+            users:[
+                {name:'22', gender:'女', age: 21},
+                {name:'jack', gender:'男', age: 25},
+                {name:'aa', gender:'男', age: 24},
+                {name:'bb', gender:'女', age: 18},
+                {name:'cc', gender:'女', age: 25}
+            ],
+            num:1
+        }
+    })
+
+</script>
+</html>
