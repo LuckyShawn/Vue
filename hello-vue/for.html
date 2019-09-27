@@ -23,6 +23,13 @@
         </tr>
         </tbody>
     </table>
+    <div  id="app1">
+        <ul>
+            <li  v-for="(value, key, index) in person">
+                {{ index }}---{{ key }}:{{ value }}
+            </li>
+        </ul>
+    </div>
 </body>
 <link rel="stylesheet" href="./node_modules/bootstrap3/dist/css/bootstrap.min.css">
 <script src="./node_modules/jquery/dist/jquery.js"></script>
@@ -43,6 +50,13 @@ var app = new Vue({
             num:1
         }
     })
+
+var app1 = new Vue({
+    el:"#app1",
+    data:{
+        person : {name:'shawn', gender:'男', age: 25}
+    }
+})
 
 </script>
 </html>

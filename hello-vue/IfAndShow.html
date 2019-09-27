@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <button @click="show = !show" class="btn btn-primary">点击我</button>
+    <br>
+    <h3 v-if="show">
+        点击按钮切换我
+    </h3>
+</div>
+
+<div id="app1">
+    <!--按钮居中-->
+    <button @click="show = !show" class="btn btn-danger" style="display:block;margin:0 auto">点击我</button>
+    <table class="table" v-if="show">
+        <tr v-for="(user, index) in users" v-if="user.age &gt; 23">
+            <td>{{ index+1 }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.age }}</td>
+        </tr>
+    </table>
+</div>
+
+<div id="app2">
+    <h3 v-if="Math.random() > 0.5">
+        you can see me!
+    </h3>
+    <h3 v-else>
+        you can't see me!
+    </h3>
+
+    <button class="btn-info" @click="type = 'C'" @keyup.enter="change">点击切换字母</button>
+    <input type="text" v-model="type">
+    <span>{{ type }}</span>
+    <h3 v-if="type === 'A'">
+        A
+    </h3>
+    <h3 v-else-if="type === 'B'">
+        B
+    </h3>
+    <h3 v-else-if="type === 'C'">
+        C
+    </h3>
+    <h3 v-else>
+        not ABC
+    </h3>
+
+
+</div>
+</body>
+<link rel="stylesheet" href="./node_modules/bootstrap3/dist/css/bootstrap.min.css">
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: "#app",
+        data: {
+            show: true
+        }
+    })
+
+    var app1 = new Vue({
+        el: "#app1",
+        data: {
+            users: [
+                {name: 'shawn', gender: '男', age: 21},
+                {name: 'jack', gender: '男', age: 30},
+                {name: 'tom', gender: '男', age: 24},
+                {name: 'lucy', gender: '女', age: 18},
+                {name: '古力娜扎', gender: '女', age: 25}
+            ],
+            show: true
+        }
+    })
+
+    var app2 = new Vue({
+        el: "#app2",
+        data: {
+            type: 'A'
+        },
+        methods:{
+            change:function(){
+                this.type='B'
+            }
+        }
+    })
+</script>
+</html>
