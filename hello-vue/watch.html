@@ -5,6 +5,31 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div id="app">
+        <input type="text" v-model="message"><br>
+        <span>newVal: {{ newVal }}</span><br>
+        <span>oldVal: {{ oldVal }}</span>
+    </div>
 </body>
+<link rel="stylesheet" href="./node_modules/bootstrap3/dist/css/bootstrap.min.css">
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"message",
+            newVal:"",
+            oldVal:""
+        },
+        watch:{
+            message:function (newVal, oldVal) {
+                console.log(newVal + "|" + oldVal)
+                this.newVal = newVal;
+                this.oldVal = oldVal;
+            }
+        }
+    })
+</script>
 </html>

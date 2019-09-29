@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--使用定义好的全局组件-->
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+</div>
+
+<div id="app1">
+    <counter1></counter1>
+</div>
+
+</body>
+<link rel="stylesheet" href="./node_modules/bootstrap3/dist/css/bootstrap.min.css">
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/bootstrap3/dist/js/bootstrap.min.js"></script>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    // 定义全局组件，两个参数：1，组件名称。2，组件参数
+    Vue.component("counter",{
+        template:'<button v-on:click="count++">你点了我 {{ count }} 次，我记住了.</button>',
+        data(){
+            return {
+                count:0
+            }
+        }
+    })
+
+/*- 组件其实也是一个Vue实例，因此它在定义时也会接收：data、methods、生命周期函数等
+- 不同的是组件不会与页面的元素绑定，否则就无法复用了，因此没有el属性。
+- 但是组件渲染需要html模板，所以增加了template属性，值就是HTML模板
+- 全局组件定义完毕，任何vue实例都可以直接在HTML中通过组件名称来使用组件了。
+- data的定义方式比较特殊，必须是一个函数。*/
+
+var app = new Vue({
+    el:"#app"
+})
+
+// 定义一个对象
+const counter = {
+    template: '<button v-on:click="count++">你点了我 {{ count }} 次，我记住了.</button>',
+    data() {
+        return {
+            count: 0
+        }
+    }
+}
+
+var app1 = new Vue({
+    el:"#app1",
+    components: {
+        counter1: counter    //将定义的对象注册为组件
+    }
+})
+
+
+
+</script>
+</html>
